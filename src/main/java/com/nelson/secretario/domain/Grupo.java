@@ -3,6 +3,8 @@ package com.nelson.secretario.domain;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -11,8 +13,9 @@ public class Grupo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	Publicador dirigente;
+	Integer dirigente;
 	String local;
 
 	public Grupo() {
@@ -20,7 +23,7 @@ public class Grupo implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Grupo(Publicador dirigente, String local) {
+	public Grupo(Integer dirigente, String local) {
 		super();
 		this.dirigente = dirigente;
 		this.local = local;
@@ -34,11 +37,11 @@ public class Grupo implements Serializable {
 		this.id = id;
 	}
 
-	public Publicador getDirigente() {
+	public Integer getDirigente() {
 		return dirigente;
 	}
 
-	public void setDirigente(Publicador dirigente) {
+	public void setDirigente(Integer dirigente) {
 		this.dirigente = dirigente;
 	}
 

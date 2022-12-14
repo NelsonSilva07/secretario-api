@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -12,6 +14,7 @@ public class Publicador implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String endereco;
@@ -25,7 +28,7 @@ public class Publicador implements Serializable {
 	private boolean servo = false;
 	private boolean pioneiro = false;
 	private boolean ativo = true;
-	private Grupo grupo;
+	private Integer grupo;
 	private boolean saida = false;
 
 	public Publicador() {
@@ -33,8 +36,9 @@ public class Publicador implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Publicador(String nome, char sexo, Date dt_nascimento) {
+	public Publicador(Integer id, String nome, char sexo, Date dt_nascimento) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.sexo = sexo;
 		this.dtNascimento = dt_nascimento;
@@ -144,11 +148,11 @@ public class Publicador implements Serializable {
 		this.ativo = ativo;
 	}
 
-	public Grupo getGrupo() {
+	public Integer getGrupo() {
 		return grupo;
 	}
 
-	public void setGrupo(Grupo grupo) {
+	public void setGrupo(Integer grupo) {
 		this.grupo = grupo;
 	}
 
